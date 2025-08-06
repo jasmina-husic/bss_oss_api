@@ -1,0 +1,12 @@
+# Ignore Visual Studio and build output directories
+bin/
+obj/
+.vs/
+.vs/Edge.Monitoring.Processor/DesignTimeBuild/.dtbcache.v2
+.vs/Edge.Monitoring.Processor/v17/.futdcache.v2
+.vs/Edge.Monitoring.Processor/v17/.suo
+.vs/Edge.Monitoring.Processor/v17/DocumentLayout.backup.json
+.vs/Edge.Monitoring.Processor/v17/DocumentLayout.json
+.vs/ProjectEvaluation/edge.monitoring.processor.metadata.v9.bin
+.vs/ProjectEvaluation/edge.monitoring.processor.projects.v9.bin
+.vs/ProjectEvaluation/edge.monitoring.processor.strings.v9.bin

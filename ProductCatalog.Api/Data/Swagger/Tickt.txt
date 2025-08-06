@@ -1,0 +1,8 @@
+{
+  "customerCrmId": "CRM001",
+  "ticketingId": "EXT-20250701-9000",
+  "title": "POS system outage",
+  "status": "Open",
+  "priority": "High",
+  "owner": "support@sample.com"
+}

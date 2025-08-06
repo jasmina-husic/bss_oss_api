@@ -1,0 +1,29 @@
+{
+  "crmId": "CRM003",
+  "name": "TechNova LLC",
+  "email": "contact@technova.io",
+  "company": "TechNova",
+  "type": "Business",
+  "industry": "Information Technology",
+  "annualRevenue": 4800000,
+  "phone": "+1-415-555-0199",
+  "website": "https://technova.io",
+  "billingAddress": {
+    "street": "200 Innovation Drive",
+    "city": "San Francisco",
+    "state": "CA",
+    "postalCode": "94107",
+    "country": "USA"
+  },
+  "shippingAddress": {
+    "street": "200 Innovation Drive",
+    "city": "San Francisco",
+    "state": "CA",
+    "postalCode": "94107",
+    "country": "USA"
+  },
+  "numberOfEmployees": 220,
+  "rating": "A",
+  "accountManager": "Alice Johnson",
+  "state": "Active"
+}

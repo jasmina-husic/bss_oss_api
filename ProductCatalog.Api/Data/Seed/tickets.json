@@ -1,0 +1,32 @@
+[
+  {
+    "Id": 1,
+    "TicketingId": "EXT-0001",
+    "CustomerCrmId": "CRM001",
+    "CustomerId": 1,
+    "Title": "Seed Ticket",
+    "Status": "Open",
+    "Priority": "Low",
+    "Owner": "support@acme.com"
+  },
+  {
+    "Id": 2,
+    "TicketingId": "EXT-0002",
+    "CustomerCrmId": "CRM002",
+    "CustomerId": 1,
+    "Title": "Seed Ticket",
+    "Status": "Open",
+    "Priority": "Low",
+    "Owner": "support@acme.com"
+  },
+  {
+    "Id": 3,
+    "TicketingId": "EXT-0003",
+    "CustomerCrmId": "CRM002",
+    "CustomerId": 1,
+    "Title": "Seed Ticket",
+    "Status": "Open",
+    "Priority": "Low",
+    "Owner": "support@acme.com"
+  }
+]

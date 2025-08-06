@@ -1,0 +1,26 @@
+[
+  {
+    "Id": 1,
+    "CustomerId": 1,
+    "ProductOfferingId": 1,
+    "Stage": "ClosedWon",
+    "ContractNumber": "CN-0001",
+    "ContractStartDate": "2025-06-25T20:36:50.248730",
+    "ContractEndDate": "2026-06-25T20:36:50.249476",
+    "CreatedAt": "2025-06-25T20:36:50.248730",
+    "LastModified": "2025-06-25T20:36:50.248730",
+    "IsDeleted": false
+  },
+  {
+    "Id": 2,
+    "CustomerId": 2,
+    "ProductOfferingId": 2,
+    "Stage": "Provisioning",
+    "ContractNumber": "CN-0002",
+    "ContractStartDate": "2025-06-25T20:36:50.248730",
+    "ContractEndDate": null,
+    "CreatedAt": "2025-06-25T20:36:50.248730",
+    "LastModified": "2025-06-25T20:36:50.248730",
+    "IsDeleted": false
+  }
+]

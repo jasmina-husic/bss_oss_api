@@ -1,0 +1,22 @@
+[
+  {
+    "Id": 1,
+    "Sku": "SKU-001",
+    "Name": "Premium Support",
+    "Category": "Service",
+    "Description": "24/7 priority technical support",
+    "CreatedAt": "2025-06-25T20:36:50.248730",
+    "LastModified": "2025-06-25T20:36:50.248730",
+    "IsDeleted": false
+  },
+  {
+    "Id": 2,
+    "Sku": "SKU-002",
+    "Name": "Cloud Storage 1TB",
+    "Category": "Service",
+    "Description": "Secure cloud storage - 1 TB plan",
+    "CreatedAt": "2025-06-25T20:36:50.248730",
+    "LastModified": "2025-06-25T20:36:50.248730",
+    "IsDeleted": false
+  }
+]

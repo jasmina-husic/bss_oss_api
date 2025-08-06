@@ -1,0 +1,62 @@
+[
+  {
+    "Id": 1,
+    "CrmId": "CRM001",
+    "Name": "Acme",
+    "Email": "info@acme.com",
+    "Company": "Acme",
+    "Type": "Business",
+    "Industry": "Manufacturing",
+    "AnnualRevenue": 1000000,
+    "Phone": "+1-555",
+    "Website": "https://acme.com",
+    "BillingAddress": {
+      "Street": "Street",
+      "City": "Met",
+      "State": "CA",
+      "PostalCode": "90001",
+      "Country": "USA"
+    },
+    "ShippingAddress": {
+      "Street": "Street",
+      "City": "Met",
+      "State": "CA",
+      "PostalCode": "90001",
+      "Country": "USA"
+    },
+    "NumberOfEmployees": 500,
+    "Rating": "A",
+    "AccountManager": "John",
+    "State": "Active"
+  },
+  {
+    "Id": 2,
+    "CrmId": "CRM002",
+    "Name": "Nick Co",
+    "Email": "info@nikco.com",
+    "Company": "Acme",
+    "Type": "Business",
+    "Industry": "Manufacturing",
+    "AnnualRevenue": 1000000,
+    "Phone": "+1-555",
+    "Website": "https://acme.com",
+    "BillingAddress": {
+      "Street": "Street",
+      "City": "Met",
+      "State": "CA",
+      "PostalCode": "90001",
+      "Country": "USA"
+    },
+    "ShippingAddress": {
+      "Street": "Street",
+      "City": "Met",
+      "State": "CA",
+      "PostalCode": "90001",
+      "Country": "USA"
+    },
+    "NumberOfEmployees": 500,
+    "Rating": "A",
+    "AccountManager": "John",
+    "State": "Active"
+  }
+]

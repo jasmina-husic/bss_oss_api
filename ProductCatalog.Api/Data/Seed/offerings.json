@@ -1,0 +1,54 @@
+[
+  {
+    "Id": 1,
+    "Name": "Starter Package",
+    "Status": "Launched",
+    "Description": "Entry-level bundle",
+    "PricePlan": {
+      "Currency": "USD",
+      "SetupFee": 0,
+      "MonthlyFee": 49.99,
+      "BillingCycle": "calendarMonthly"
+    },
+    "Components": [
+      {
+        "ProductOfferingId": 1,
+        "ProductId": 1,
+        "Quantity": 1,
+        "Billing": "recurring"
+      }
+    ],
+    "CreatedAt": "2025-06-25T20:36:50.248730",
+    "LastModified": "2025-06-25T20:36:50.248730",
+    "IsDeleted": false
+  },
+  {
+    "Id": 2,
+    "Name": "Enterprise Package",
+    "Status": "Launched",
+    "Description": "All-inclusive bundle",
+    "PricePlan": {
+      "Currency": "USD",
+      "SetupFee": 499,
+      "MonthlyFee": 399.99,
+      "BillingCycle": "calendarMonthly"
+    },
+    "Components": [
+      {
+        "ProductOfferingId": 2,
+        "ProductId": 1,
+        "Quantity": 1,
+        "Billing": "recurring"
+      },
+      {
+        "ProductOfferingId": 2,
+        "ProductId": 2,
+        "Quantity": 1,
+        "Billing": "recurring"
+      }
+    ],
+    "CreatedAt": "2025-06-25T20:36:50.248730",
+    "LastModified": "2025-06-25T20:36:50.248730",
+    "IsDeleted": false
+  }
+]
