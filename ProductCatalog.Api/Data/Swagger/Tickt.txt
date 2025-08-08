@@ -1,8 +1,32 @@
 {
-  "customerCrmId": "CRM001",
-  "ticketingId": "EXT-20250701-9000",
+  // Unique identifier for the ticket assigned by downstream systems.  Optional.
+  "dsId": "DS-20250807-9001",
+
+  // Identifier of the customer associated with this ticket.  Either
+  // customerId or customerCrmId must be provided.
+  "customerId": 1,
+
+  // Alternative way to identify the customer using their CRM identifier.
+  // "customerCrmId": "CRM001",
+
+  // Short title describing the ticket.  This will populate both the
+  // subject and title fields of the ticket.
   "title": "POS system outage",
-  "status": "Open",
-  "priority": "High",
-  "owner": "support@sample.com"
+
+  // Detailed description of the issue.
+  "description": "Point‑of‑sale system is down across all stores.",
+
+  // Status of the ticket.  Allowed values: NEW, OPEN, PENDING, HOLD,
+  // SOLVED, CLOSED.
+  "status": "OPEN",
+
+  // Priority of the ticket.  Allowed values: LOW, NORMAL, HIGH, URGENT.
+  "priority": "HIGH",
+
+  // Email or username of the ticket owner.  This value is mapped to the
+  // assignee on the ticket.
+  "owner": "support@sample.com",
+
+  // Email or username of the submitter of the ticket.  Optional.
+  "submitter": "user@example.com"
 }

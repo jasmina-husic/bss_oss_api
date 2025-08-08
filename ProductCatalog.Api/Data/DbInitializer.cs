@@ -36,6 +36,32 @@ public static class DbInitializer
             var customers = await Load<Customer>("customers.json");
             var tickets   = await Load<Ticket>("tickets.json");
             var comments  = await Load<TicketComment>("ticket_comments.json");
+
+            // Normalise ticket fields to support UI model.  Because the
+            // persisted JSON may not include CustomerId, Title or Owner
+            // properties, copy values from existing fields where
+            // appropriate.  Do this before adding to the context to
+            // ensure EF tracks the correct values.
+            foreach (var ticket in tickets)
+            {
+                // When CustomerId is zero (default int), set it from
+                // RequesterId to maintain backward compatibility.
+                if (ticket.CustomerId == 0)
+                {
+                    ticket.CustomerId = ticket.RequesterId;
+                }
+                // Mirror Subject into Title if Title is empty
+                if (string.IsNullOrEmpty(ticket.Title) && !string.IsNullOrEmpty(ticket.Subject))
+                {
+                    ticket.Title = ticket.Subject;
+                }
+                // Mirror Assignee into Owner if Owner is empty
+                if (string.IsNullOrEmpty(ticket.Owner) && !string.IsNullOrEmpty(ticket.Assignee))
+                {
+                    ticket.Owner = ticket.Assignee;
+                }
+            }
+
             if (customers.Any()) await ctx.Customers.AddRangeAsync(customers);
             if (tickets.Any())   await ctx.Tickets.AddRangeAsync(tickets);
             if (comments.Any())  await ctx.TicketComments.AddRangeAsync(comments);

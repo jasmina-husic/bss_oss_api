@@ -322,6 +322,9 @@ namespace ProductCatalog.Api.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("integer");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("text");
@@ -335,6 +338,10 @@ namespace ProductCatalog.Api.Migrations
 
                     b.Property<DateTime>("LastModified")
                         .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Owner")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("Priority")
                         .IsRequired()
@@ -352,6 +359,10 @@ namespace ProductCatalog.Api.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Submitter")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("text");
 

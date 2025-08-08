@@ -10,6 +10,15 @@ public class Ticket : BaseEntity
     public string DsId { get; set; } = string.Empty;
 
     /// <summary>
+    /// Internal identifier of the customer associated with this ticket.  This
+    /// mirrors the <see cref="RequesterId"/> property but is provided to
+    /// support user interface models which refer to the customer by
+    /// "customerId".  When seeding or creating tickets via the API,
+    /// this should be set to the same value as <see cref="RequesterId"/>.
+    /// </summary>
+    public int CustomerId { get; set; }
+
+    /// <summary>
     /// Optional CRM identifier for backwards compatibility.  Not used
     /// by the DS model.
     /// </summary>
@@ -34,6 +43,14 @@ public class Ticket : BaseEntity
     /// terminology (previously called Title).
     /// </summary>
     public string Subject { get; set; } = string.Empty;
+
+    /// <summary>
+    /// Title of the ticket.  Provided to align with UI models which refer
+    /// to the short description of a ticket as "title" rather than
+    /// "subject".  In most cases this should mirror the value of
+    /// <see cref="Subject"/> and vice versa.
+    /// </summary>
+    public string Title { get; set; } = string.Empty;
 
     /// <summary>
     /// Detailed description of the ticket.  Added to align with DS
@@ -64,6 +81,13 @@ public class Ticket : BaseEntity
     /// Replaces the previous Owner field.
     /// </summary>
     public string Assignee { get; set; } = string.Empty;
+
+    /// <summary>
+    /// Owner of the ticket.  Provided to align with UI models which refer
+    /// to the user assigned to the ticket as the "owner".  This value
+    /// should generally mirror the <see cref="Assignee"/> property.
+    /// </summary>
+    public string Owner { get; set; } = string.Empty;
 
     /// <summary>
     /// Collection of comments associated with this ticket.  Comments

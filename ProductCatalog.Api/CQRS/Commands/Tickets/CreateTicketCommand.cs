@@ -32,11 +32,25 @@ public class CreateTicketCommand : ICommand<Ticket>
     /// CustomerCrmId when specified.
     /// </summary>
     public int? RequesterId { get; set; }
+
+    /// <summary>
+    /// Internal identifier of the customer associated with the ticket.
+    /// Provided for UI compatibility.  When specified it takes precedence
+    /// over <see cref="RequesterId"/> when resolving the customer.
+    /// </summary>
+    public int? CustomerId { get; set; }
     
     /// <summary>
     /// Short subject describing the ticket.
     /// </summary>
     public string Subject { get; set; } = string.Empty;
+
+    /// <summary>
+    /// Title of the ticket (UI term).  When provided this value will be
+    /// assigned to <see cref="Subject"/> if <see cref="Subject"/> is
+    /// empty.
+    /// </summary>
+    public string? Title { get; set; }
 
     /// <summary>
     /// Detailed description of the issue.  Optional.
@@ -65,6 +79,13 @@ public class CreateTicketCommand : ICommand<Ticket>
     /// the ticket.
     /// </summary>
     public string Assignee { get; set; } = string.Empty;
+
+    /// <summary>
+    /// Owner of the ticket (UI term).  When provided this value will be
+    /// assigned to <see cref="Assignee"/> if <see cref="Assignee"/> is
+    /// empty.
+    /// </summary>
+    public string? Owner { get; set; }
 }
 
 public class CreateTicketCommandHandler : ICommandHandler<CreateTicketCommand, Ticket>
@@ -74,12 +95,20 @@ public class CreateTicketCommandHandler : ICommandHandler<CreateTicketCommand, T
 
     public async Task<Ticket> Handle(CreateTicketCommand cmd, CancellationToken ct)
     {
-        // Resolve the requester (customer) identifier
+        // Resolve the requester/customer identifier.  Prefer CustomerId
+        // (UI term) over RequesterId (internal term), and fall back to
+        // CRM lookup if neither identifier is provided.
         int requesterId;
-        if (cmd.RequesterId.HasValue && cmd.RequesterId.Value > 0)
+        if (cmd.CustomerId.HasValue && cmd.CustomerId.Value > 0)
+        {
+            requesterId = cmd.CustomerId.Value;
+            var customer = await _ctx.Customers.FirstOrDefaultAsync(c => c.Id == requesterId, ct);
+            if (customer is null)
+                throw new InvalidOperationException($"Customer with Id '{requesterId}' not found.");
+        }
+        else if (cmd.RequesterId.HasValue && cmd.RequesterId.Value > 0)
         {
             requesterId = cmd.RequesterId.Value;
-            // Ensure the customer exists
             var customer = await _ctx.Customers.FirstOrDefaultAsync(c => c.Id == requesterId, ct);
             if (customer is null)
                 throw new InvalidOperationException($"Customer with Id '{requesterId}' not found.");
@@ -93,7 +122,7 @@ public class CreateTicketCommandHandler : ICommandHandler<CreateTicketCommand, T
         }
         else
         {
-            throw new InvalidOperationException("Either RequesterId or CustomerCrmId must be provided.");
+            throw new InvalidOperationException("Either CustomerId, RequesterId or CustomerCrmId must be provided.");
         }
 
         // Generate DS identifier if not provided
@@ -105,17 +134,30 @@ public class CreateTicketCommandHandler : ICommandHandler<CreateTicketCommand, T
         if (await _ctx.Tickets.AnyAsync(t => t.DsId == dsId, ct))
             throw new InvalidOperationException($"DsId '{dsId}' already exists.");
 
+        // Determine subject/title.  Use Subject if provided, otherwise Title.
+        var subject = !string.IsNullOrWhiteSpace(cmd.Subject)
+            ? cmd.Subject
+            : (!string.IsNullOrWhiteSpace(cmd.Title) ? cmd.Title! : string.Empty);
+
+        // Determine assignee/owner.  Use Assignee if provided, otherwise Owner.
+        var assignee = !string.IsNullOrWhiteSpace(cmd.Assignee)
+            ? cmd.Assignee
+            : (!string.IsNullOrWhiteSpace(cmd.Owner) ? cmd.Owner! : string.Empty);
+
         var ticket = new Ticket
         {
             DsId = dsId,
             CustomerCrmId = cmd.CustomerCrmId,
             RequesterId = requesterId,
-            Subject = cmd.Subject,
+            CustomerId = requesterId,
+            Subject = subject,
+            Title = subject,
             Description = cmd.Description,
             Status = cmd.Status,
             Priority = cmd.Priority,
             Submitter = cmd.Submitter,
-            Assignee = cmd.Assignee
+            Assignee = assignee,
+            Owner = assignee
         };
 
         _ctx.Tickets.Add(ticket);

@@ -25,9 +25,22 @@ public class TicketCreateDto
     public int? RequesterId { get; set; }
 
     /// <summary>
+    /// Internal identifier of the customer associated with the ticket.  This
+    /// property is provided for UI compatibility.  If specified, it will
+    /// override <see cref="RequesterId"/> when resolving the customer.
+    /// </summary>
+    public int? CustomerId { get; set; }
+
+    /// <summary>
     /// Short description of the ticket.
     /// </summary>
     public string Subject { get; set; } = string.Empty;
+
+    /// <summary>
+    /// Title of the ticket (UI term).  When provided, this value will be
+    /// used to populate <see cref="Subject"/>.
+    /// </summary>
+    public string? Title { get; set; }
 
     /// <summary>
     /// Detailed description of the issue.
@@ -53,4 +66,10 @@ public class TicketCreateDto
     /// Identifier (username or email) of the assignee.
     /// </summary>
     public string Assignee { get; set; } = string.Empty;
+
+    /// <summary>
+    /// Owner of the ticket (UI term).  When provided, this value will be
+    /// used to populate <see cref="Assignee"/>.
+    /// </summary>
+    public string? Owner { get; set; }
 }
