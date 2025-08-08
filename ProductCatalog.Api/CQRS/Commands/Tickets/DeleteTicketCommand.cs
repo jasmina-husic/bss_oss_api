@@ -5,8 +5,16 @@ namespace ProductCatalog.Api.CQRS.Commands.Tickets;
 
 public class DeleteTicketCommand : ICommand<bool>
 {
+    /// <summary>
+    /// CNIS identifier for the ticket.  Optional.
+    /// </summary>
     public int? Id { get; set; }
-    public string? TicketingId { get; set; }
+
+    /// <summary>
+    /// DS identifier for the ticket.  Optional; used when Id is not
+    /// provided.
+    /// </summary>
+    public string? DsId { get; set; }
 }
 
 public class DeleteTicketCommandHandler : ICommandHandler<DeleteTicketCommand, bool>
@@ -18,7 +26,7 @@ public class DeleteTicketCommandHandler : ICommandHandler<DeleteTicketCommand, b
     {
         var ticket = cmd.Id.HasValue
             ? await _ctx.Tickets.FirstOrDefaultAsync(t => t.Id == cmd.Id.Value, ct)
-            : await _ctx.Tickets.FirstOrDefaultAsync(t => t.TicketingId == cmd.TicketingId, ct);
+            : await _ctx.Tickets.FirstOrDefaultAsync(t => t.DsId == cmd.DsId, ct);
 
         if (ticket is null) return false;
 

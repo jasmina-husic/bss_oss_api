@@ -107,11 +107,17 @@ app.UseMiddleware<ApiKeyAuthMiddleware>();
 app.UseAuthorization();
 app.MapControllers();
 
-// Migrate + seed
+// Create and seed database.  EnsureDeleted/EnsureCreated will drop and
+// recreate the schema to match the current model on startup.  This
+// avoids schema mismatches when the domain model evolves.
 using (var scope = app.Services.CreateScope())
 {
     var ctx = scope.ServiceProvider.GetRequiredService<ProductCatalogDbContext>();
-    ctx.Database.Migrate();
+    // WARNING: EnsureDeleted will drop the existing database.  In a
+    // development environment this is acceptable to keep the schema in
+    // sync with the model.  For production, replace with migrations.
+    await ctx.Database.EnsureDeletedAsync();
+    await ctx.Database.EnsureCreatedAsync();
     await DbInitializer.Initialize(ctx);
 }
 

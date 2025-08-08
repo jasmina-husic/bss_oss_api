@@ -11,5 +11,8 @@ public class GetAllTicketsQueryHandler : IQueryHandler<GetAllTicketsQuery, IEnum
     private readonly ProductCatalogDbContext _ctx;
     public GetAllTicketsQueryHandler(ProductCatalogDbContext ctx)=>_ctx=ctx;
     public async Task<IEnumerable<Ticket>> Handle(GetAllTicketsQuery q, CancellationToken ct)
-        => await _ctx.Tickets.ToListAsync(ct);
+        => await _ctx.Tickets
+                 .Include(t => t.Requester)
+                 .Include(t => t.Comments)
+                 .ToListAsync(ct);
 }

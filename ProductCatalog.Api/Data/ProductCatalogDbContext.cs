@@ -14,6 +14,20 @@ public class ProductCatalogDbContext : DbContext
     public DbSet<ProductOfferingComponent> ProductOfferingComponents => Set<ProductOfferingComponent>();
     public DbSet<Ticket> Tickets => Set<Ticket>();
 
+    /// <summary>
+    /// Comments attached to support tickets.  Each comment is stored
+    /// in its own table and relates back to a ticket via
+    /// <see cref="TicketComment.TicketId"/>.  Soft deletion applies.
+    /// </summary>
+    public DbSet<TicketComment> TicketComments => Set<TicketComment>();
+
+    /// <summary>
+    /// Customer‑facing services exposed in the catalog.  These map
+    /// directly to the CFS objects from the UI seed data and allow
+    /// CRUD operations via the API.
+    /// </summary>
+    public DbSet<CustomerFacingService> CustomerFacingServices => Set<CustomerFacingService>();
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
@@ -24,6 +38,7 @@ public class ProductCatalogDbContext : DbContext
         modelBuilder.Entity<ProductOffering>().HasQueryFilter(e => !e.IsDeleted);
         modelBuilder.Entity<ProductOrder>().HasQueryFilter(e => !e.IsDeleted);
         modelBuilder.Entity<Ticket>().HasQueryFilter(e => !e.IsDeleted);
+        modelBuilder.Entity<TicketComment>().HasQueryFilter(e => !e.IsDeleted);
 
         // Owned types
         modelBuilder.Entity<Customer>().OwnsOne(c => c.BillingAddress);
@@ -43,6 +58,43 @@ public class ProductCatalogDbContext : DbContext
             .HasOne(poc => poc.Product)
             .WithMany(p => p.OfferingComponents)
             .HasForeignKey(poc => poc.ProductId);
+
+        // Array mappings for simple lists on Product, ProductOffering and CFS
+        // Npgsql supports mapping List<T> to array columns.  Explicitly
+        // set the column types to ensure the correct array types are used.
+        modelBuilder.Entity<Product>()
+            .Property(p => p.Sequence)
+            .HasColumnType("text[]");
+        modelBuilder.Entity<Product>()
+            .Property(p => p.CfsIds)
+            .HasColumnType("integer[]");
+        modelBuilder.Entity<ProductOffering>()
+            .Property(o => o.ActivationSequence)
+            .HasColumnType("text[]");
+        modelBuilder.Entity<CustomerFacingService>()
+            .Property(c => c.ServiceSpecIds)
+            .HasColumnType("integer[]");
+        modelBuilder.Entity<CustomerFacingService>()
+            .Property(c => c.ActivationSequence)
+            .HasColumnType("text[]");
+
+        // Owned entity configuration for CustomerFacingService
+        // Each Characteristic is stored as a separate row owned by
+        // CustomerFacingService.  ActivationSequence and ServiceSpecIds
+        // are mapped to Postgres array types by Npgsql provider.
+        modelBuilder.Entity<CustomerFacingService>()
+            .OwnsMany(c => c.Characteristics);
+
+        modelBuilder.Entity<CustomerFacingService>().HasQueryFilter(e => !e.IsDeleted);
+
+        // TicketComment relationship: a ticket has many comments.  Use
+        // the TicketId foreign key on TicketComment.  When a ticket is
+        // deleted, its comments remain but are also marked as deleted
+        // via the soft delete mechanism.
+        modelBuilder.Entity<TicketComment>()
+            .HasOne(tc => tc.Ticket)
+            .WithMany(t => t.Comments)
+            .HasForeignKey(tc => tc.TicketId);
     }
 
     public override int SaveChanges()

@@ -1,54 +1,160 @@
 [
   {
-    "Id": 1,
-    "Name": "Starter Package",
-    "Status": "Launched",
-    "Description": "Entry-level bundle",
+    "Id": 12,
+    "Name": "SMB Security Suite",
+    "Status": "active",
+    "Description": "Comprehensive security bundle for small and medium businesses: firewalls, switches, wireless APs, license and support",
     "PricePlan": {
       "Currency": "USD",
-      "SetupFee": 0,
-      "MonthlyFee": 49.99,
+      "SetupFee": 500,
+      "MonthlyFee": 0,
       "BillingCycle": "calendarMonthly"
     },
     "Components": [
       {
-        "ProductOfferingId": 1,
-        "ProductId": 1,
+        "ProductOfferingId": 12,
+        "ProductId": 15,
+        "Quantity": 2,
+        "Billing": "oneOff"
+      },
+      {
+        "ProductOfferingId": 12,
+        "ProductId": 16,
+        "Quantity": 4,
+        "Billing": "oneOff"
+      },
+      {
+        "ProductOfferingId": 12,
+        "ProductId": 17,
+        "Quantity": 8,
+        "Billing": "oneOff"
+      },
+      {
+        "ProductOfferingId": 12,
+        "ProductId": 18,
+        "Quantity": 2,
+        "Billing": "monthly"
+      },
+      {
+        "ProductOfferingId": 12,
+        "ProductId": 19,
+        "Quantity": 14,
+        "Billing": "usage"
+      },
+      {
+        "ProductOfferingId": 12,
+        "ProductId": 8,
         "Quantity": 1,
-        "Billing": "recurring"
+        "Billing": "oneOff"
       }
     ],
-    "CreatedAt": "2025-06-25T20:36:50.248730",
-    "LastModified": "2025-06-25T20:36:50.248730",
+    "ActivationSequence": [
+      "Allocate hardware",
+      "Configure devices",
+      "Install on site",
+      "Commission network"
+    ],
+    "CreatedAt": "2025-05-29T22:52:07.434637Z",
+    "LastModified": "2025-05-29T22:52:07.434637Z",
     "IsDeleted": false
   },
   {
-    "Id": 2,
-    "Name": "Enterprise Package",
-    "Status": "Launched",
-    "Description": "All-inclusive bundle",
+    "Id": 13,
+    "Name": "Enterprise SecNet",
+    "Status": "active",
+    "Description": "Integrated security and networking bundle for larger enterprises: two firewalls, four switches and eight access points with license and support",
     "PricePlan": {
       "Currency": "USD",
-      "SetupFee": 499,
-      "MonthlyFee": 399.99,
+      "SetupFee": 1299,
+      "MonthlyFee": 0,
       "BillingCycle": "calendarMonthly"
     },
     "Components": [
       {
-        "ProductOfferingId": 2,
-        "ProductId": 1,
-        "Quantity": 1,
-        "Billing": "recurring"
+        "ProductOfferingId": 13,
+        "ProductId": 12,
+        "Quantity": 2,
+        "Billing": "oneOff"
       },
       {
-        "ProductOfferingId": 2,
-        "ProductId": 2,
+        "ProductOfferingId": 13,
+        "ProductId": 13,
+        "Quantity": 4,
+        "Billing": "oneOff"
+      },
+      {
+        "ProductOfferingId": 13,
+        "ProductId": 14,
+        "Quantity": 8,
+        "Billing": "oneOff"
+      },
+      {
+        "ProductOfferingId": 13,
+        "ProductId": 18,
+        "Quantity": 2,
+        "Billing": "monthly"
+      },
+      {
+        "ProductOfferingId": 13,
+        "ProductId": 19,
+        "Quantity": 14,
+        "Billing": "usage"
+      },
+      {
+        "ProductOfferingId": 13,
+        "ProductId": 8,
         "Quantity": 1,
-        "Billing": "recurring"
+        "Billing": "oneOff"
       }
     ],
-    "CreatedAt": "2025-06-25T20:36:50.248730",
-    "LastModified": "2025-06-25T20:36:50.248730",
+    "ActivationSequence": [
+      "Allocate hardware",
+      "Configure devices",
+      "Ship & install",
+      "Commission network"
+    ],
+    "CreatedAt": "2025-05-29T22:52:07.434637Z",
+    "LastModified": "2025-05-29T22:52:07.434637Z",
+    "IsDeleted": false
+  },
+  {
+    "Id": 14,
+    "Name": "Basic Support Package",
+    "Status": "active",
+    "Description": "Includes UTM license and premium support; no hardware required",
+    "PricePlan": {
+      "Currency": "USD",
+      "SetupFee": 0,
+      "MonthlyFee": 499,
+      "BillingCycle": "calendarMonthly"
+    },
+    "Components": [
+      {
+        "ProductOfferingId": 14,
+        "ProductId": 18,
+        "Quantity": 1,
+        "Billing": "monthly"
+      },
+      {
+        "ProductOfferingId": 14,
+        "ProductId": 19,
+        "Quantity": 5,
+        "Billing": "usage"
+      },
+      {
+        "ProductOfferingId": 14,
+        "ProductId": 6,
+        "Quantity": 1,
+        "Billing": "monthly"
+      }
+    ],
+    "ActivationSequence": [
+      "Activate license",
+      "Register support",
+      "Go live"
+    ],
+    "CreatedAt": "2025-05-29T22:52:07.434637Z",
+    "LastModified": "2025-05-29T22:52:07.434637Z",
     "IsDeleted": false
   }
 ]

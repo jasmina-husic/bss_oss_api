@@ -1,0 +1,212 @@
+[
+  {
+    "Id": 1,
+    "Name": "Surveillance Streaming",
+    "Category": "surveillance",
+    "LifecycleState": "active",
+    "Version": "2.0",
+    "ServiceSpecIds": [
+      1,
+      2
+    ],
+    "Characteristics": [
+      {
+        "name": "retentionDays",
+        "valueType": "number",
+        "configurable": true
+      }
+    ],
+    "ActivationSequence": [
+      "Provision storage",
+      "Deploy stream service",
+      "Return URL"
+    ],
+    "CreatedAt": "2025-08-06T05:47:29.502465",
+    "LastModified": "2025-08-06T05:47:29.502469",
+    "IsDeleted": false
+  },
+  {
+    "Id": 2,
+    "Name": "Secure Networking",
+    "Category": "networking",
+    "LifecycleState": "active",
+    "Version": "1.5",
+    "ServiceSpecIds": [
+      3
+    ],
+    "Characteristics": [
+      {
+        "name": "vlanId",
+        "valueType": "number",
+        "configurable": true
+      }
+    ],
+    "ActivationSequence": [
+      "Create VLAN",
+      "Apply ACLs"
+    ],
+    "CreatedAt": "2025-08-06T05:47:29.502471",
+    "LastModified": "2025-08-06T05:47:29.502480",
+    "IsDeleted": false
+  },
+  {
+    "Id": 3,
+    "Name": "AI Insight",
+    "Category": "ai",
+    "LifecycleState": "active",
+    "Version": "2.1",
+    "ServiceSpecIds": [
+      2
+    ],
+    "Characteristics": [
+      {
+        "name": "language",
+        "valueType": "string",
+        "configurable": true
+      }
+    ],
+    "ActivationSequence": [
+      "Provision GPU slice",
+      "Deploy inference container"
+    ],
+    "CreatedAt": "2025-08-06T05:47:29.502482",
+    "LastModified": "2025-08-06T05:47:29.502483",
+    "IsDeleted": false
+  },
+  {
+    "Id": 4,
+    "Name": "ITSM Support",
+    "Category": "itsm",
+    "LifecycleState": "active",
+    "Version": "1.0",
+    "ServiceSpecIds": [],
+    "Characteristics": [
+      {
+        "name": "ticketsPerDay",
+        "valueType": "number",
+        "configurable": false
+      }
+    ],
+    "ActivationSequence": [
+      "Enable ticket queue"
+    ],
+    "CreatedAt": "2025-08-06T05:47:29.502485",
+    "LastModified": "2025-08-06T05:47:29.502486",
+    "IsDeleted": false
+  },
+  {
+    "Id": 5,
+    "Name": "Firewall Management",
+    "Category": "security",
+    "LifecycleState": "active",
+    "Version": "1.0",
+    "ServiceSpecIds": [],
+    "Characteristics": [
+      {
+        "name": "model",
+        "valueType": "string",
+        "configurable": true
+      }
+    ],
+    "ActivationSequence": [
+      "Install device",
+      "Configure firewall policies",
+      "Enable UTM features"
+    ],
+    "CreatedAt": "2025-08-06T05:47:29.502487",
+    "LastModified": "2025-08-06T05:47:29.502488",
+    "IsDeleted": false
+  },
+  {
+    "Id": 6,
+    "Name": "Switch Management",
+    "Category": "networking",
+    "LifecycleState": "active",
+    "Version": "1.0",
+    "ServiceSpecIds": [],
+    "Characteristics": [
+      {
+        "name": "portCount",
+        "valueType": "number",
+        "configurable": true
+      }
+    ],
+    "ActivationSequence": [
+      "Rack switch",
+      "Configure VLANs",
+      "Enable PoE"
+    ],
+    "CreatedAt": "2025-08-06T05:47:29.502490",
+    "LastModified": "2025-08-06T05:47:29.502491",
+    "IsDeleted": false
+  },
+  {
+    "Id": 7,
+    "Name": "Wireless AP Service",
+    "Category": "networking",
+    "LifecycleState": "active",
+    "Version": "1.0",
+    "ServiceSpecIds": [],
+    "Characteristics": [
+      {
+        "name": "ssid",
+        "valueType": "string",
+        "configurable": true
+      }
+    ],
+    "ActivationSequence": [
+      "Install AP",
+      "Broadcast SSID",
+      "Join controllers"
+    ],
+    "CreatedAt": "2025-08-06T05:47:29.502492",
+    "LastModified": "2025-08-06T05:47:29.502493",
+    "IsDeleted": false
+  },
+  {
+    "Id": 8,
+    "Name": "UTM License Service",
+    "Category": "security",
+    "LifecycleState": "active",
+    "Version": "1.0",
+    "ServiceSpecIds": [],
+    "Characteristics": [
+      {
+        "name": "licenseTerm",
+        "valueType": "string",
+        "configurable": true
+      }
+    ],
+    "ActivationSequence": [
+      "Activate license",
+      "Update signatures",
+      "Notify customer"
+    ],
+    "CreatedAt": "2025-08-06T05:47:29.502503",
+    "LastModified": "2025-08-06T05:47:29.502505",
+    "IsDeleted": false
+  },
+  {
+    "Id": 9,
+    "Name": "FortiCare Support Service",
+    "Category": "service",
+    "LifecycleState": "active",
+    "Version": "1.0",
+    "ServiceSpecIds": [],
+    "Characteristics": [
+      {
+        "name": "supportLevel",
+        "valueType": "string",
+        "configurable": true
+      }
+    ],
+    "ActivationSequence": [
+      "Register support contract",
+      "Provide contact details",
+      "Enable 24x7 support"
+    ],
+    "CreatedAt": "2025-08-06T05:47:29.502506",
+    "LastModified": "2025-08-06T05:47:29.502507",
+    "IsDeleted": false
+  }
+]

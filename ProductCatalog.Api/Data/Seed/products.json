@@ -1,22 +1,354 @@
 [
   {
     "Id": 1,
-    "Sku": "SKU-001",
-    "Name": "Premium Support",
-    "Category": "Service",
-    "Description": "24/7 priority technical support",
-    "CreatedAt": "2025-06-25T20:36:50.248730",
-    "LastModified": "2025-06-25T20:36:50.248730",
+    "Sku": "CAM-4K-EXT",
+    "Name": "4K Outdoor Camera",
+    "Category": "surveillance",
+    "Description": "4K Outdoor Camera product",
+    "PriceOneOff": 120,
+    "PriceMonthly": 0,
+    "Sequence": [
+      "procure",
+      "install"
+    ],
+    "CfsIds": [
+      1
+    ],
+    "CreatedAt": "2025-05-29T22:52:07.434637Z",
+    "LastModified": "2025-05-29T22:52:07.434637Z",
     "IsDeleted": false
   },
   {
     "Id": 2,
-    "Sku": "SKU-002",
+    "Sku": "CAM-2K-DOM",
+    "Name": "2K Indoor Dome",
+    "Category": "surveillance",
+    "Description": "2K Indoor Dome product",
+    "PriceOneOff": 90,
+    "PriceMonthly": 0,
+    "Sequence": [
+      "procure",
+      "install"
+    ],
+    "CfsIds": [
+      1
+    ],
+    "CreatedAt": "2025-05-29T22:52:07.434637Z",
+    "LastModified": "2025-05-29T22:52:07.434637Z",
+    "IsDeleted": false
+  },
+  {
+    "Id": 3,
+    "Sku": "TAP-1G",
+    "Name": "1G Network Tap",
+    "Category": "networking",
+    "Description": "1G Network Tap product",
+    "PriceOneOff": 85,
+    "PriceMonthly": 0,
+    "Sequence": [
+      "procure",
+      "install"
+    ],
+    "CfsIds": [
+      2
+    ],
+    "CreatedAt": "2025-05-29T22:52:07.434637Z",
+    "LastModified": "2025-05-29T22:52:07.434637Z",
+    "IsDeleted": false
+  },
+  {
+    "Id": 4,
+    "Sku": "EDGE-GW",
+    "Name": "Edge Gateway",
+    "Category": "networking",
+    "Description": "Edge Gateway product",
+    "PriceOneOff": 650,
+    "PriceMonthly": 15,
+    "Sequence": [
+      "procure",
+      "install"
+    ],
+    "CfsIds": [
+      2
+    ],
+    "CreatedAt": "2025-05-29T22:52:07.434637Z",
+    "LastModified": "2025-05-29T22:52:07.434637Z",
+    "IsDeleted": false
+  },
+  {
+    "Id": 5,
+    "Sku": "SW-SEC-24",
+    "Name": "Secure Switch 24P",
+    "Category": "security",
+    "Description": "Secure Switch 24P product",
+    "PriceOneOff": 440,
+    "PriceMonthly": 10,
+    "Sequence": [
+      "procure",
+      "install"
+    ],
+    "CfsIds": [
+      2
+    ],
+    "CreatedAt": "2025-05-29T22:52:07.434637Z",
+    "LastModified": "2025-05-29T22:52:07.434637Z",
+    "IsDeleted": false
+  },
+  {
+    "Id": 6,
+    "Sku": "ITSM-5-24",
+    "Name": "ITSM 5 tickets",
+    "Category": "itsm",
+    "Description": "ITSM 5 tickets product",
+    "PriceOneOff": 0,
+    "PriceMonthly": 40,
+    "Sequence": [
+      "enable"
+    ],
+    "CfsIds": [
+      4
+    ],
+    "CreatedAt": "2025-05-29T22:52:07.434637Z",
+    "LastModified": "2025-05-29T22:52:07.434637Z",
+    "IsDeleted": false
+  },
+  {
+    "Id": 7,
+    "Sku": "SUP-HOUR",
+    "Name": "Support Hour",
+    "Category": "itsm",
+    "Description": "Support Hour product",
+    "PriceOneOff": 0,
+    "PriceMonthly": 0,
+    "Sequence": [
+      "enable"
+    ],
+    "CfsIds": [
+      4
+    ],
+    "CreatedAt": "2025-05-29T22:52:07.434637Z",
+    "LastModified": "2025-05-29T22:52:07.434637Z",
+    "IsDeleted": false
+  },
+  {
+    "Id": 8,
+    "Sku": "INST-FEE",
+    "Name": "Installation Fee",
+    "Category": "service",
+    "Description": "Installation Fee product",
+    "PriceOneOff": 200,
+    "PriceMonthly": 0,
+    "Sequence": [
+      "procure",
+      "install"
+    ],
+    "CfsIds": [],
+    "CreatedAt": "2025-05-29T22:52:07.434637Z",
+    "LastModified": "2025-05-29T22:52:07.434637Z",
+    "IsDeleted": false
+  },
+  {
+    "Id": 9,
+    "Sku": "AI-LIC",
+    "Name": "AI Assistant Base",
+    "Category": "ai",
+    "Description": "AI Assistant Base product",
+    "PriceOneOff": 0,
+    "PriceMonthly": 25,
+    "Sequence": [
+      "enable"
+    ],
+    "CfsIds": [
+      3
+    ],
+    "CreatedAt": "2025-05-29T22:52:07.434637Z",
+    "LastModified": "2025-05-29T22:52:07.434637Z",
+    "IsDeleted": false
+  },
+  {
+    "Id": 10,
+    "Sku": "ML-ADD",
+    "Name": "ML Analytics",
+    "Category": "ai",
+    "Description": "ML Analytics product",
+    "PriceOneOff": 0,
+    "PriceMonthly": 0,
+    "Sequence": [
+      "enable"
+    ],
+    "CfsIds": [
+      3
+    ],
+    "CreatedAt": "2025-05-29T22:52:07.434637Z",
+    "LastModified": "2025-05-29T22:52:07.434637Z",
+    "IsDeleted": false
+  },
+  {
+    "Id": 11,
+    "Sku": "STO-1TB",
     "Name": "Cloud Storage 1TB",
-    "Category": "Service",
-    "Description": "Secure cloud storage - 1 TB plan",
-    "CreatedAt": "2025-06-25T20:36:50.248730",
-    "LastModified": "2025-06-25T20:36:50.248730",
+    "Category": "ai",
+    "Description": "Cloud Storage 1TB product",
+    "PriceOneOff": 0,
+    "PriceMonthly": 35,
+    "Sequence": [
+      "enable"
+    ],
+    "CfsIds": [
+      3
+    ],
+    "CreatedAt": "2025-05-29T22:52:07.434637Z",
+    "LastModified": "2025-05-29T22:52:07.434637Z",
+    "IsDeleted": false
+  },
+  {
+    "Id": 12,
+    "Sku": "FG-200F-BDL-950-24",
+    "Name": "FortiGate 200F",
+    "Category": "security",
+    "Description": "Next-gen firewall (200F) product",
+    "PriceOneOff": 3800,
+    "PriceMonthly": 150,
+    "Sequence": [
+      "procure",
+      "install"
+    ],
+    "CfsIds": [
+      5
+    ],
+    "CreatedAt": "2025-05-29T22:52:07.434637Z",
+    "LastModified": "2025-05-29T22:52:07.434637Z",
+    "IsDeleted": false
+  },
+  {
+    "Id": 13,
+    "Sku": "FS-248E-POE",
+    "Name": "FortiSwitch 48E-POE",
+    "Category": "networking",
+    "Description": "48-port PoE switch",
+    "PriceOneOff": 2200,
+    "PriceMonthly": 120,
+    "Sequence": [
+      "procure",
+      "install"
+    ],
+    "CfsIds": [
+      6
+    ],
+    "CreatedAt": "2025-05-29T22:52:07.434637Z",
+    "LastModified": "2025-05-29T22:52:07.434637Z",
+    "IsDeleted": false
+  },
+  {
+    "Id": 14,
+    "Sku": "FAP-421E-US",
+    "Name": "FortiAP 421E",
+    "Category": "networking",
+    "Description": "High-capacity access point",
+    "PriceOneOff": 600,
+    "PriceMonthly": 40,
+    "Sequence": [
+      "procure",
+      "install"
+    ],
+    "CfsIds": [
+      7
+    ],
+    "CreatedAt": "2025-05-29T22:52:07.434637Z",
+    "LastModified": "2025-05-29T22:52:07.434637Z",
+    "IsDeleted": false
+  },
+  {
+    "Id": 15,
+    "Sku": "FG-100F-BDL-950-12",
+    "Name": "FortiGate 100F",
+    "Category": "security",
+    "Description": "Next-gen firewall (100F) product",
+    "PriceOneOff": 1850,
+    "PriceMonthly": 0,
+    "Sequence": [
+      "procure",
+      "install"
+    ],
+    "CfsIds": [
+      5
+    ],
+    "CreatedAt": "2025-05-29T22:52:07.434637Z",
+    "LastModified": "2025-05-29T22:52:07.434637Z",
+    "IsDeleted": false
+  },
+  {
+    "Id": 16,
+    "Sku": "FS-124E-POE",
+    "Name": "FortiSwitch 124E-POE",
+    "Category": "networking",
+    "Description": "24-port PoE switch",
+    "PriceOneOff": 1200,
+    "PriceMonthly": 0,
+    "Sequence": [
+      "procure",
+      "install"
+    ],
+    "CfsIds": [
+      6
+    ],
+    "CreatedAt": "2025-05-29T22:52:07.434637Z",
+    "LastModified": "2025-05-29T22:52:07.434637Z",
+    "IsDeleted": false
+  },
+  {
+    "Id": 17,
+    "Sku": "FAP-321E-US",
+    "Name": "FortiAP 321E",
+    "Category": "networking",
+    "Description": "WiFi 6 access point",
+    "PriceOneOff": 420,
+    "PriceMonthly": 0,
+    "Sequence": [
+      "procure",
+      "install"
+    ],
+    "CfsIds": [
+      7
+    ],
+    "CreatedAt": "2025-05-29T22:52:07.434637Z",
+    "LastModified": "2025-05-29T22:52:07.434637Z",
+    "IsDeleted": false
+  },
+  {
+    "Id": 18,
+    "Sku": "FC-10-01000-950-02",
+    "Name": "UTM Bundle License",
+    "Category": "service",
+    "Description": "3-year UTM license subscription",
+    "PriceOneOff": 1650,
+    "PriceMonthly": 0,
+    "Sequence": [
+      "enable"
+    ],
+    "CfsIds": [
+      8
+    ],
+    "CreatedAt": "2025-05-29T22:52:07.434637Z",
+    "LastModified": "2025-05-29T22:52:07.434637Z",
+    "IsDeleted": false
+  },
+  {
+    "Id": 19,
+    "Sku": "FC-10-FCARE-24X7",
+    "Name": "FortiCare Support",
+    "Category": "service",
+    "Description": "24/7 premium support",
+    "PriceOneOff": 180,
+    "PriceMonthly": 0,
+    "Sequence": [
+      "enable"
+    ],
+    "CfsIds": [
+      9
+    ],
+    "CreatedAt": "2025-05-29T22:52:07.434637Z",
+    "LastModified": "2025-05-29T22:52:07.434637Z",
     "IsDeleted": false
   }
 ]

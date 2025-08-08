@@ -4,10 +4,23 @@ using ProductCatalog.Domain.Entities;
 
 namespace ProductCatalog.Api.CQRS.Commands.Tickets;
 
+/// <summary>
+/// Command to update an existing ticket.  The ticket may be
+/// identified either by its numeric Id (CNIS Id) or by its DS
+/// identifier.  Only non-null properties on the command will
+/// overwrite existing values on the ticket.
+/// </summary>
 public class UpdateTicketCommand : ICommand<Ticket>
 {
-    public string TicketingId { get; set; } = string.Empty;   // alternative key
-    public Ticket Ticket { get; set; } = null!;
+    public int? Id { get; set; }
+    public string DsId { get; set; } = string.Empty;
+    public int? RequesterId { get; set; }
+    public string? Subject { get; set; }
+    public string? Description { get; set; }
+    public string? Status { get; set; }
+    public string? Priority { get; set; }
+    public string? Submitter { get; set; }
+    public string? Assignee { get; set; }
 }
 
 public class UpdateTicketCommandHandler : ICommandHandler<UpdateTicketCommand, Ticket>
@@ -17,24 +30,36 @@ public class UpdateTicketCommandHandler : ICommandHandler<UpdateTicketCommand, T
 
     public async Task<Ticket> Handle(UpdateTicketCommand cmd, CancellationToken ct)
     {
-        Ticket? existing = null;
+        // Locate existing ticket by Id or DsId
+        Ticket? ticket = null;
+        if (cmd.Id.HasValue && cmd.Id.Value > 0)
+        {
+            ticket = await _ctx.Tickets.FirstOrDefaultAsync(t => t.Id == cmd.Id.Value, ct);
+        }
+        if (ticket is null && !string.IsNullOrWhiteSpace(cmd.DsId))
+        {
+            ticket = await _ctx.Tickets.FirstOrDefaultAsync(t => t.DsId == cmd.DsId, ct);
+        }
+        if (ticket is null) return null!;
 
-        if (cmd.Ticket.Id != 0)
-            existing = await _ctx.Tickets.FirstOrDefaultAsync(t => t.Id == cmd.Ticket.Id, ct);
+        // Update requester if provided
+        if (cmd.RequesterId.HasValue)
+        {
+            var customer = await _ctx.Customers.FirstOrDefaultAsync(c => c.Id == cmd.RequesterId.Value, ct);
+            if (customer is null)
+                throw new InvalidOperationException($"Customer with Id '{cmd.RequesterId.Value}' not found.");
+            ticket.RequesterId = cmd.RequesterId.Value;
+        }
 
-        if (existing is null && !string.IsNullOrWhiteSpace(cmd.TicketingId))
-            existing = await _ctx.Tickets.FirstOrDefaultAsync(t => t.TicketingId == cmd.TicketingId, ct);
+        if (cmd.Subject is not null) ticket.Subject = cmd.Subject;
+        if (cmd.Description is not null) ticket.Description = cmd.Description;
+        if (cmd.Status is not null) ticket.Status = cmd.Status;
+        if (cmd.Priority is not null) ticket.Priority = cmd.Priority;
+        if (cmd.Submitter is not null) ticket.Submitter = cmd.Submitter;
+        if (cmd.Assignee is not null) ticket.Assignee = cmd.Assignee;
 
-        if (existing is null) return null!;
-
-        existing.Title = cmd.Ticket.Title;
-        existing.Status = cmd.Ticket.Status;
-        existing.Priority = cmd.Ticket.Priority;
-        existing.Owner = cmd.Ticket.Owner;
-        existing.LastModified = DateTime.UtcNow;
-
-
+        ticket.LastModified = DateTime.UtcNow;
         await _ctx.SaveChangesAsync(ct);
-        return existing;
+        return ticket;
     }
 }
